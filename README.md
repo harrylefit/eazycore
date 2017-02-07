@@ -30,16 +30,20 @@ In build.gradle (top-level)
 
 Add remote maven url in
 
+```groovy
 repositories {
       maven {
           url "https://jitpack.io"
       }
   }
+```
 Add classpath in
 
+```groovy
   dependencies {
       classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'    
   }
+```
 
 Download
 --------
