@@ -1,7 +1,7 @@
 # EazyCore
 Code base for Android
 
-[![Codacy Badge]([![Codacy Badge](https://api.codacy.com/project/badge/Grade/6619cd5f41d44885bf516647877bd83b)](https://www.codacy.com/app/harryle-fit/eazycore?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=harrylefit/eazycore&amp;utm_campaign=Badge_Grade))
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/6619cd5f41d44885bf516647877bd83b)](https://www.codacy.com/app/harryle-fit/eazycore?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=harrylefit/eazycore&amp;utm_campaign=Badge_Grade)
 
 Using :
 - [ButterKnife](https://github.com/JakeWharton/butterknife)
