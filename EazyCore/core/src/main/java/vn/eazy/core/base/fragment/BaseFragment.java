@@ -19,7 +19,6 @@ import vn.eazy.core.helper.FragmentHelper;
  */
 
 public abstract class BaseFragment extends Fragment {
-    private BaseActivity baseActivity;
     protected View rootView;
     private Unbinder unbinder;
     private OnCallbackListener callbackListener;

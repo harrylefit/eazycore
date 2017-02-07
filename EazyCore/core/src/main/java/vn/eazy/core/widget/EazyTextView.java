@@ -16,7 +16,6 @@ import vn.eazy.core.helper.FontHelper;
  */
 
 public abstract class EazyTextView extends TextView {
-    private float defaultTextSize = 0;
     private List<String> fontArrays;
 
     public EazyTextView(Context context) {
@@ -35,7 +34,6 @@ public abstract class EazyTextView extends TextView {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        defaultTextSize = getTextSize();
         setUpFontsArray();
         int type = 1;
         if (attrs != null) {
