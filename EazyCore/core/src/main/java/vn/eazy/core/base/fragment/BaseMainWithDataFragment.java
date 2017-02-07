@@ -123,6 +123,18 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
         swipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefresh);
     }
 
+    public LinearLayout getRootLayout() {
+        return rootLayout;
+    }
+
+    public ViewStubCompat getReplaceLayout() {
+        return replaceLayout;
+    }
+
+    public View getExtraView() {
+        return extraView;
+    }
+
     public abstract RecyclerViewAdapter initAdapter();
 
 
