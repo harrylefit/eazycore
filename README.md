@@ -28,6 +28,7 @@ This library is not yet released in Maven Central, until then you can add as a l
 
 In build.gradle (top-level)
 Add remote maven url in
+
   repositories {
           maven {
               url "https://jitpack.io"
@@ -35,6 +36,7 @@ Add remote maven url in
       }
 
 Add classpath in
+
   dependencies {
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'    
     }
@@ -45,7 +47,7 @@ Download
 ```groovy
 compile ('com.github.harrylefit:EazyCore:1.0.0'){
         exclude group: 'com.jakewharton', module: 'butterknife'
-    }
+}
 ```
 
 #Licence
