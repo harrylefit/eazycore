@@ -1,0 +1,9 @@
+
+Hsquid:S1068".Remove this unused "rootLayout" private field.(îñË°ùÿÿÿÿ
+Bsquid:S1068"-Remove this unused "extraView" private field.(Ôäû
+ssquid:S1450"YRemove the "rootLayout" field and declare it as a local variable in the relevant methods.(îñË°ùÿÿÿÿ
+qsquid:S1450"\Remove the "replaceLayout" field and declare it as a local variable in the relevant methods.(åïç
+Gsquid:S1135"2Complete the task associated to this TODO comment.(°—¹·
+Lsquid:S1135"2Complete the task associated to this TODO comment.(«×©øÿÿÿÿ
+Nsquid:S3400"9Remove this method and declare a constant for this value.(È¸å
+5squid:S2326"V is not used in the class.(ŒêÎÿÿÿÿÿ

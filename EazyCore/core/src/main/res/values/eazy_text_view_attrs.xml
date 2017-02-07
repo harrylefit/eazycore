@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EazyTextView">
+        <attr name="etv_font" format="enum">
+            <enum name="light" value="0" />
+            <enum name="regular" value="1" />
+            <enum name="medium" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

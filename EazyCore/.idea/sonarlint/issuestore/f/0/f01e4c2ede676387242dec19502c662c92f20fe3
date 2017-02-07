@@ -1,0 +1,3 @@
+
+Hsquid:S1068"3Remove this unused "defaultTextSize" private field.(γη‰Ξ
+ssquid:S1450"^Remove the "defaultTextSize" field and declare it as a local variable in the relevant methods.(γη‰Ξ
