@@ -27,19 +27,19 @@ There are base classes . They're separated into 3 main parts (activity, fragment
 This library is not yet released in Maven Central, until then you can add as a library module or use JitPack.io
 
 In build.gradle (top-level)
+
 Add remote maven url in
 
-  repositories {
-          maven {
-              url "https://jitpack.io"
-          }
+repositories {
+      maven {
+          url "https://jitpack.io"
       }
-
+  }
 Add classpath in
 
   dependencies {
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'    
-    }
+      classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'    
+  }
 
 Download
 --------
