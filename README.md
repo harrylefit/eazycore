@@ -14,7 +14,6 @@ Code base for Android
  Android MVP is a way to separate Business logic from activities/views/fragments to make them independent of most lifecycle-related events. This way an application becomes simpler, overall application reliability increases up to 10 times, application code becomes shorter, code maintainability becomes better and developer's life becomes happier.
 
  A sample Android app using the MVP architecture, using :
-- [Jackson](https://github.com/FasterXML/jackson)
 - [ButterKnife](https://github.com/JakeWharton/butterknife)
 - [Parceler](https://github.com/johncarl81/parceler)
 - [FragmentArgs](https://github.com/sockeqwe/fragmentargs)
