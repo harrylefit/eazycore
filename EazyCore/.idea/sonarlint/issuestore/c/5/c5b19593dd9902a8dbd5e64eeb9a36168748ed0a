@@ -1,7 +1,0 @@
-
-csquid:MaximumInheritanceDepth"<This class has 9 parents which is greater than 5 authorized.(î¿–Õ
-†"squid:ClassVariableVisibilityCheck"ZMake fragmentHelper a static final constant or non-public and provide accessors if needed.(•‹«ê
-psquid:S00116"ZRename this field "NULL_TOOLBAR_EX" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(“ú’÷
-6squid:S1170"!Make this final field static too.(“ú’÷
-:squid:S1166"%Either log or rethrow this exception.(Å¡ß
-=squid:S1148"#Use a logger to log this exception.(€ÉÔ…ýÿÿÿÿ
