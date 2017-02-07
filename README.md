@@ -1,0 +1,2 @@
+# EazyCore
+Code base Android
