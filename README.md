@@ -52,9 +52,7 @@ Download
 --------
 
 ```groovy
-compile ('com.github.harrylefit:eazycore:1.0.1'){
-        exclude group: 'com.jakewharton', module: 'butterknife'
-}
+compile 'com.github.harrylefit:eazycore:1.0.1'
 ```
 
 #Licence
