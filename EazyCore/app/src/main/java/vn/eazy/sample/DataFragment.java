@@ -1,5 +1,6 @@
 package vn.eazy.sample;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -9,6 +10,7 @@ import com.tellh.nolistadapter.adapter.RecyclerViewAdapter;
 
 import vn.eazy.core.base.fragment.BaseMainWithDataFragment;
 import vn.eazy.core.base.viewbinder.OnClickItemListener;
+import vn.eazy.sample.dialog.BaseDialog;
 import vn.eazy.sample.dummy.DummyFactory;
 import vn.eazy.sample.model.Data;
 import vn.eazy.sample.viewbinder.DataViewBinder;
@@ -30,6 +32,23 @@ public class DataFragment extends BaseMainWithDataFragment {
                     @Override
                     public void onClickItem(View view, int pos, Data model) {
                         Toast.makeText(getContext(), "Click item", Toast.LENGTH_SHORT).show();
+                        BaseDialog.Builder customBuilder = new
+                                BaseDialog.Builder(getContext());
+                        customBuilder.setLayoutCustom(R.layout.custom_dialog).setIcon(R.drawable.ic_home_white_24dp).setTitle("Custom Dialog Title")
+                                .setMessage("Custom dialog message")
+                                .setNegativeButton("Cancel",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        })
+                                .setPositiveButton("Confirm",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                        customBuilder.create().show();
                     }
                 })).build();
     }
