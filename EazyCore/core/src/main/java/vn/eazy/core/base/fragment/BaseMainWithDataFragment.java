@@ -21,22 +21,17 @@ import vn.eazy.core.recyclerview.AutoFitGridRecyclerView;
  */
 
 public abstract class BaseMainWithDataFragment<V extends BaseObject> extends BaseMainFragment implements SwipeRefreshLayout.OnRefreshListener {
-    public enum TYPE_LAYOUT_MANAGER {
-        LINEAR_VERTICAL, LINEAR_HOR, GRID
-    }
-
-    private LinearLayout rootLayout;
-    private ViewStubCompat replaceLayout;
-    private View extraView;
     protected RecyclerView rvData;
     protected RecyclerViewAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
+    private LinearLayout rootLayout;
+    private ViewStubCompat replaceLayout;
+    private View extraView;
 
     @Override
     public int getLayoutId() {
         return R.layout.layout_data_content;
     }
-
 
     private void checkAndSetLayoutManagerByType() {
         switch (getTypeLayoutManager()) {
@@ -94,10 +89,18 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
     public void disableSwipeRefreshLayout() {
         if (swipeRefresh.isRefreshing()) {
             swipeRefresh.setRefreshing(false);
-            if (adapter != null) {
-                adapter.clear(rvData);
-            }
         }
+    }
+
+    public void clearAllData() {
+        if (adapter != null) {
+            adapter.clear(rvData);
+        }
+    }
+
+    public void hideRefreshLayoutAndClearData(){
+        disableSwipeRefreshLayout();
+        clearAllData();
     }
 
     @Override
@@ -137,10 +140,13 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
 
     public abstract RecyclerViewAdapter initAdapter();
 
-
     public abstract TYPE_LAYOUT_MANAGER getTypeLayoutManager();
 
     public int inflateExtraView() {
         return -1;
+    }
+
+    public enum TYPE_LAYOUT_MANAGER {
+        LINEAR_VERTICAL, LINEAR_HOR, GRID
     }
 }
