@@ -1,4 +1,4 @@
-package vn.eazy.sample;
+package vn.eazy.sample.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
