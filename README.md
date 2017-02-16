@@ -10,13 +10,14 @@ Using :
 - [FragmentArgs](https://github.com/sockeqwe/fragmentargs)
 - [NoListAdapter](https://github.com/TellH/NoListAdapter)
 - [Timber](https://github.com/JakeWharton/timber)
+- [Rebound](https://github.com/facebook/rebound)
 
 ##Structure
 
 There are base classes . They're separated into 3 main parts (activity, fragment, adapter)
 - **Activity :**
   - **BaseActivity :** it contains basic functions to manage the life-cycle of the activity.
-  - **BaseMainActivity: ** it inherits from `BaseActivity` and manage toolbar, fragments.
+  - **BaseMainActivity:** it inherits from `BaseActivity` and manage toolbar, fragments.
 
 - **Fragment :**
   - **BaseFragment :** it's same as `BaseActivity`. It manages the life-cycle of the fragment.
@@ -25,6 +26,11 @@ There are base classes . They're separated into 3 main parts (activity, fragment
 
 - **Adapter :**
   - **BaseViewBinder :** it's provide the functions to implement `Adapter` into `Recyclerview` quickly.
+
+- **Dialog :**
+  - **BaseDialog :** it's provide the basic functions to implement `Dialog` quickly.
+  - **BaseAnimationDialog :** it inherits from `BaseDialog` and provide the functions to support animation.
+  - **BaseDataDialog :** it inherits from `BaseAnimationDialog` and provide the functions to load data into it.
 
 ##Setup
 This library is not yet released in Maven Central, until then you can add as a library module or use JitPack.io
@@ -52,9 +58,7 @@ Download
 --------
 
 ```groovy
-compile ('com.github.harrylefit:eazycore:1.0.1'){
-        exclude group: 'com.jakewharton', module: 'butterknife'
-}
+compile 'com.github.harrylefit:eazycore:1.0.2'
 ```
 
 #Licence
