@@ -2,7 +2,6 @@ package vn.eazy.sample.fragment;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.HandlerThread;
 import android.support.annotation.Nullable;
 import android.view.View;
 
@@ -29,6 +28,7 @@ public class PullRefreshFragment extends BaseMainWithDataFragment implements Err
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        showBackButton(true);
         adapter.addAll(DummyFactory.generateData());
     }
 
