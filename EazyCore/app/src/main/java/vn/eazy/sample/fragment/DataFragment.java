@@ -1,4 +1,4 @@
-package vn.eazy.sample;
+package vn.eazy.sample.fragment;
 
 import android.content.DialogInterface;
 import android.os.Bundle;

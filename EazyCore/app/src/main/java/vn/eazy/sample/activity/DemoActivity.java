@@ -1,10 +1,12 @@
-package vn.eazy.sample;
+package vn.eazy.sample.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import vn.eazy.core.base.activity.BaseMainActivity;
+import vn.eazy.sample.R;
+import vn.eazy.sample.fragment.MainFragment;
 
 /**
  * Created by Harry on 2/7/17.
@@ -32,7 +34,7 @@ public class DemoActivity extends BaseMainActivity {
 
     @Override
     public void setUpViewsAndData() {
-        fragmentHelper.replaceFragment(DataFragment.newInstance());
+        fragmentHelper.replaceFragment(MainFragment.newInstance());
     }
 
 
