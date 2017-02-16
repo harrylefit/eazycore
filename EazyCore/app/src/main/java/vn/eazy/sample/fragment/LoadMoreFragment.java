@@ -37,6 +37,7 @@ public class LoadMoreFragment extends BaseMainWithDataFragment implements Footer
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        showBackButton(true);
         adapter.addAll(DummyFactory.generateData());
     }
 

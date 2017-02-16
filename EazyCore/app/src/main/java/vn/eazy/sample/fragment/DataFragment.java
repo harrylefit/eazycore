@@ -24,6 +24,11 @@ public class DataFragment extends BaseMainWithDataFragment {
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public RecyclerViewAdapter initAdapter() {
         return RecyclerViewAdapter.builder().addItemType(new DataViewBinder(getContext())
                 .setOnClickItemListener(new OnClickItemListener<Data>() {
@@ -34,6 +39,7 @@ public class DataFragment extends BaseMainWithDataFragment {
                 })).build();
     }
 
+
     @Override
     public TYPE_LAYOUT_MANAGER getTypeLayoutManager() {
         return TYPE_LAYOUT_MANAGER.LINEAR_VERTICAL;
@@ -42,6 +48,8 @@ public class DataFragment extends BaseMainWithDataFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        showBackButton(true);
         adapter.addAll(DummyFactory.generateData());
+
     }
 }
