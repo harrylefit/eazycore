@@ -1,5 +1,9 @@
 package vn.eazy.sample.fragment;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 import butterknife.OnClick;
 import vn.eazy.core.base.fragment.BaseMainFragment;
 import vn.eazy.sample.R;
