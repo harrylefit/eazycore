@@ -28,6 +28,7 @@ dependencies {
         fragArgsVersion = "3.0.2"
         bundlerParcelerVersion = "2.1.2"
         timberVersion = "4.4.0"
+        reboundVersion = "0.3.8"
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -52,5 +53,7 @@ dependencies {
 
     //Timber
     compile "com.jakewharton.timber:timber:$timberVersion"
+
+    compile "com.facebook.rebound:rebound:$reboundVersion"
 
 }
