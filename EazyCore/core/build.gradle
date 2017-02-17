@@ -26,8 +26,8 @@ dependencies {
         parcelerVersion = "1.1.6"
         dartVersion = "2.0.1"
         fragArgsVersion = "3.0.2"
-        bundlerParcelerVersion = "2.1.2"
-        timberVersion = "4.4.0"
+        bundlerParcelerVersion = "3.0.2"
+        timberVersion = "4.5.0"
         reboundVersion = "0.3.8"
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
