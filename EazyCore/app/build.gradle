@@ -27,6 +27,7 @@ android {
         exclude 'META-INF/rxjava.properties'
     }
 
+
     productFlavors {
         develop {
             applicationId "${packageName}.develop"
