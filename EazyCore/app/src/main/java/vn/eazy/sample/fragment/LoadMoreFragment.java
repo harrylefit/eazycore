@@ -21,6 +21,7 @@ import vn.eazy.sample.viewbinder.ErrorViewBinder;
 import vn.eazy.sample.viewbinder.LoadMoreViewBinder;
 
 import static com.tellh.nolistadapter.adapter.FooterLoadMoreAdapterWrapper.UpdateType.LOAD_MORE;
+import static com.tellh.nolistadapter.adapter.FooterLoadMoreAdapterWrapper.UpdateType.REFRESH;
 
 /**
  * Created by Brian  on 15/02/2017.
@@ -28,7 +29,7 @@ import static com.tellh.nolistadapter.adapter.FooterLoadMoreAdapterWrapper.Updat
 
 public class LoadMoreFragment extends BaseMainWithDataFragment implements FooterLoadMoreAdapterWrapper.OnReachFooterListener, ErrorViewBinder.OnReLoadCallback {
 
-    private int count = 0;
+    private int count =0;
 
     public static LoadMoreFragment newInstance() {
         return new LoadMoreFragment();
@@ -44,7 +45,7 @@ public class LoadMoreFragment extends BaseMainWithDataFragment implements Footer
     @Override
     public RecyclerViewAdapter initAdapter() {
         return RecyclerViewAdapter.builder().addItemType(new DataViewBinder(getContext()))
-                .setLoadMoreFooter(new LoadMoreViewBinder(), rvData, this)
+                .setLoadMoreFooter(new LoadMoreViewBinder(),rvData,this)
                 .setEmptyView(new EasyEmptyRecyclerViewBinder(R.layout.empty_view))
                 .setErrorView(new ErrorViewBinder(this))
                 .build();
@@ -62,15 +63,15 @@ public class LoadMoreFragment extends BaseMainWithDataFragment implements Footer
             public void run() {
                 FooterLoadMoreAdapterWrapper footerLoadMoreAdapterWrapper = (FooterLoadMoreAdapterWrapper) adapter;
                 List<DataBean> displayList = new ArrayList<>();
-                if(count >0){
+                if (count == 2 ) {
                     adapter.showErrorView(rvData);
-                }else {
+                } else {
                     for (int i = 0; i < DummyFactory.generateData().size(); i++) {
                         displayList.add(DummyFactory.generateData().get(i));
                     }
                     footerLoadMoreAdapterWrapper.OnGetData(displayList, LOAD_MORE);
+                    count++;
                 }
-                count++;
             }
         }, 800);
 
@@ -79,11 +80,17 @@ public class LoadMoreFragment extends BaseMainWithDataFragment implements Footer
     @Override
     public void onRefresh() {
         super.onRefresh();
+        count = 0;
         clearAllData();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                adapter.addAll(DummyFactory.generateData());
+                FooterLoadMoreAdapterWrapper footerLoadMoreAdapterWrapper = (FooterLoadMoreAdapterWrapper) adapter;
+                List<DataBean> displayList = new ArrayList<>();
+                for (int i = 0; i < DummyFactory.generateData().size(); i++) {
+                    displayList.add(DummyFactory.generateData().get(i));
+                }
+                footerLoadMoreAdapterWrapper.OnGetData(displayList, REFRESH);
             }
         }, 800);
         disableSwipeRefreshLayout();
