@@ -3,7 +3,9 @@ package vn.eazy.sample.activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
+import butterknife.BindView;
 import vn.eazy.core.base.activity.BaseMainActivity;
 import vn.eazy.sample.R;
 import vn.eazy.sample.fragment.MainFragment;
@@ -13,6 +15,8 @@ import vn.eazy.sample.fragment.MainFragment;
  */
 
 public class DemoActivity extends BaseMainActivity {
+    @BindView(R.id.fragment_content)
+    View view;
 
     @Override
     public int onColorOfToolbar() {
