@@ -46,17 +46,17 @@ public interface SnackbarInterface {
     /**
      * @param viewParent
      * @param message
-     * @param snackbarAction
+     * @param actionText
      * @param snackbarColor
      */
-    void show(View viewParent, String message, SnackbarAction snackbarAction, SnackbarColor snackbarColor);
+    void show(View viewParent, String message, String actionText, SnackbarColor snackbarColor);
 
     /**
      * @param viewParent
      * @param message
-     * @param snackbarAction
+     * @param actionListener
      * @param snackbarColor
      * @param snackbarIcon
      */
-    void show(View viewParent, String message, SnackbarAction snackbarAction, SnackbarColor snackbarColor, SnackbarIcon snackbarIcon,ClickActionListener actionListener);
+    void show(View viewParent, String message, String actionText, SnackbarColor snackbarColor, SnackbarIcon snackbarIcon,ClickActionListener actionListener);
 }
