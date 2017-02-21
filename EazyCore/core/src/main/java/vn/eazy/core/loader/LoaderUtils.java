@@ -1,5 +1,6 @@
 package vn.eazy.core.loader;
 
+import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
@@ -13,15 +14,15 @@ public interface LoaderUtils {
 
     void showLoading();
 
-    void showLoaing(String title,TYPE type);
+    void showLoaing(@NonNull String title, TYPE type);
 
-    void showLoading(String title);
+    void showLoading(@NonNull String title);
 
-    void showLoading(String title,String detail,TYPE type);
+    void showLoading(@NonNull String title,@NonNull String detail,TYPE type);
 
-    void showLoading(String title,String detail);
+    void showLoading(@NonNull String title,@NonNull String detail);
 
-    void showLoading(String title,View customView);
+    void showLoading(@NonNull String title,View customView);
 
     void hideLoading();
 }
