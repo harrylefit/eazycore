@@ -13,7 +13,7 @@ public interface LoaderUtils {
         SPIN, PIE, ANNULAR, BAR
     }
 
-    void showLoading();
+    void showLoading(Context context);
 
     void showLoaing(@NonNull String title, TYPE type,Context context);
 
