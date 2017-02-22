@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.View;
 
 import vn.eazy.core.base.OnBaseActionListener;
+import vn.eazy.core.base.activity.BaseMainActivity;
+import vn.eazy.core.toolbar.ToolbarHelper;
 
 /**
  * Created by Harry on 12/23/16.
@@ -44,5 +46,13 @@ public abstract class BaseMainFragment extends BaseFragment implements OnBaseAct
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showMenu(isShowMenu());
+    }
+
+    @Override
+    public ToolbarHelper getToolbarHelper() {
+        if(getBaseActivity() instanceof BaseMainActivity){
+            return ((BaseMainActivity) getBaseActivity()).toolbarHelper;
+        }
+        return null;
     }
 }
