@@ -38,5 +38,7 @@ public interface OnFragmentAction {
 
     int getSizeFragmentManager();
 
+    void clearAllFragments();
+
     BaseFragment getLastFragment();
 }
