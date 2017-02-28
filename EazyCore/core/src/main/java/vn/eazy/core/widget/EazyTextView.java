@@ -13,6 +13,7 @@ import java.util.List;
 import vn.eazy.core.R;
 import vn.eazy.core.helper.FontHelper;
 import vn.eazy.core.utils.PreferencesUtils;
+import vn.eazy.core.utils.WidgetUtils;
 import vn.eazy.core.widget.changetextsize.ChangeTextSizeHelper;
 
 /**
@@ -81,13 +82,10 @@ public abstract class EazyTextView extends TextView {
     public void setFontSize(float ratioSize) {
         if (ratioSize <= 0 || ratioSize == 1)
             return;
-        setTextSize(TypedValue.COMPLEX_UNIT_SP, pixelsToSp(getContext(), getTextSize() * ratioSize));
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, WidgetUtils.pixelsToSp(getContext(), getTextSize() * ratioSize));
 
     }
 
-    public  float pixelsToSp(Context context, float px) {
-        float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
-        return px / scaledDensity;
-    }
+
 
 }
