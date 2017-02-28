@@ -14,7 +14,7 @@ import vn.eazy.core.R;
 import vn.eazy.core.helper.FontHelper;
 import vn.eazy.core.utils.PreferencesUtils;
 import vn.eazy.core.utils.WidgetUtils;
-import vn.eazy.core.widget.changetextsize.ChangeTextSizeHelper;
+import vn.eazy.core.helper.ChangeTextSizeHelper;
 
 /**
  * Created by Harry on 12/24/16.

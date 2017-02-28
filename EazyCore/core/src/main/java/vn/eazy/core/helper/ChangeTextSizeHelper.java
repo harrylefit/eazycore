@@ -1,4 +1,4 @@
-package vn.eazy.core.widget.changetextsize;
+package vn.eazy.core.helper;
 
 import android.content.Context;
 
