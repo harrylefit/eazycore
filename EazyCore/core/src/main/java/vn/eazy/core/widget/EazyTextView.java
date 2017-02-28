@@ -2,7 +2,9 @@ package vn.eazy.core.widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -10,6 +12,8 @@ import java.util.List;
 
 import vn.eazy.core.R;
 import vn.eazy.core.helper.FontHelper;
+import vn.eazy.core.utils.PreferencesUtils;
+import vn.eazy.core.widget.changetextsize.ChangeTextSizeHelper;
 
 /**
  * Created by Harry on 12/24/16.
@@ -39,9 +43,16 @@ public abstract class EazyTextView extends TextView {
         if (attrs != null) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.EazyTextView);
             type = typedArray.getInt(R.styleable.EazyTextView_etv_font, 1);
+            boolean enableChangeSize = typedArray.getBoolean(R.styleable.EazyTextView_enableChangeSize, true);
+            if (enableChangeSize) {
+                float fontSizeRatio = PreferencesUtils.getFloat(getContext(), ChangeTextSizeHelper.FONT_SIZE);
+                setFontSize(fontSizeRatio);
+            }
             typedArray.recycle();
         }
-        FontHelper.setTypeFont(this, type, fontArrays);
+        if (fontArrays.size() > 0) {
+            FontHelper.setTypeFont(this, type, fontArrays);
+        }
     }
 
     private void setUpFontsArray() {
@@ -49,9 +60,15 @@ public abstract class EazyTextView extends TextView {
             fontArrays = new ArrayList<>();
         }
         fontArrays.clear();
-        fontArrays.add(createLightFont());
-        fontArrays.add(createRegularFont());
-        fontArrays.add(createMediumFont());
+        if (!TextUtils.isEmpty(createLightFont())) {
+            fontArrays.add(createLightFont());
+        }
+        if (!TextUtils.isEmpty(createRegularFont())) {
+            fontArrays.add(createRegularFont());
+        }
+        if (!TextUtils.isEmpty(createMediumFont())) {
+            fontArrays.add(createMediumFont());
+        }
     }
 
     protected abstract String createLightFont();
@@ -59,4 +76,18 @@ public abstract class EazyTextView extends TextView {
     protected abstract String createRegularFont();
 
     protected abstract String createMediumFont();
+
+
+    public void setFontSize(float ratioSize) {
+        if (ratioSize <= 0 || ratioSize == 1)
+            return;
+        setTextSize(TypedValue.COMPLEX_UNIT_SP, pixelsToSp(getContext(), getTextSize() * ratioSize));
+
+    }
+
+    public  float pixelsToSp(Context context, float px) {
+        float scaledDensity = context.getResources().getDisplayMetrics().scaledDensity;
+        return px / scaledDensity;
+    }
+
 }
