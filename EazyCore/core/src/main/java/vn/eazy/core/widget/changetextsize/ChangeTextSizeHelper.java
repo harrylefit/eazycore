@@ -8,7 +8,7 @@ import vn.eazy.core.utils.PreferencesUtils;
  * Created by cuong on 2/27/17.
  */
 
-public class ChangeTextSizeHelper extends TextSizeRatioInterface {
+public class ChangeTextSizeHelper  {
     public static String FONT_SIZE = "font size";
     public static void setTextSizeRatio(Context context,float sizeRatio) {
         PreferencesUtils.putFloat(context, FONT_SIZE, sizeRatio);
