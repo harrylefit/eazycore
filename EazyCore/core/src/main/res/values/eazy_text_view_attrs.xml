@@ -6,5 +6,7 @@
             <enum name="regular" value="1" />
             <enum name="medium" value="2" />
         </attr>
+        <attr name="enableChangeSize" format="boolean"/>
+
     </declare-styleable>
 </resources>

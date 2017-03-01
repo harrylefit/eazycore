@@ -1,5 +1,7 @@
 package vn.eazy.core.toolbar;
 
+import android.view.View;
+
 /**
  * Created by QuangTo on 12/24/16.
  */
@@ -7,7 +9,7 @@ package vn.eazy.core.toolbar;
 public interface OnToolbarAction {
     void setTitle(String title);
 
-    void setTitle(String title,String font);
+    void setTitle(String title, String font);
 
     void setTitleMainColor(int color);
 
@@ -18,4 +20,8 @@ public interface OnToolbarAction {
     void showBackButton(boolean isShow, OnCallBackToolbarAction onCallBackToolbarAction);
 
     void setImageForLeftButton(int drawable);
+
+    void setRightToolbarButton(String text, View.OnClickListener onClickListener);
+
+    void setRightToolbarButton(int iconRes, View.OnClickListener onClickListener);
 }
