@@ -1,7 +1,10 @@
 package vn.eazy.core.toolbar;
 
+import android.content.Context;
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
@@ -16,13 +19,17 @@ import vn.eazy.core.R;
 
 public class ToolbarHelper implements OnToolbarAction {
 
-    private Toolbar toolbar;
-    private ImageView leftBtn;
-    private TextView tvTitle;
+    protected Toolbar toolbar;
+    protected ImageView leftBtn;
+    protected TextView tvTitle;
+    protected TextView rightBtn;
+    protected Context context;
 
     public ToolbarHelper(Toolbar toolbar) throws IllegalAccessException {
         this.toolbar = toolbar;
+        context = toolbar.getContext();
         leftBtn = (ImageView) toolbar.findViewById(R.id.left_button);
+        rightBtn = (TextView) toolbar.findViewById(R.id.right_button);
         if (leftBtn == null) {
             throw new IllegalAccessException("Can't find this Left button");
         }
@@ -90,5 +97,43 @@ public class ToolbarHelper implements OnToolbarAction {
     @Override
     public void setImageForLeftButton(int drawable) {
         leftBtn.setImageResource(drawable);
+    }
+
+    @Override
+    public void setRightToolbarButton(String text, View.OnClickListener onClickListener) {
+        if (rightBtn == null)
+            return;
+        if (TextUtils.isEmpty(text)) {
+            rightBtn.setVisibility(View.GONE);
+        } else {
+            rightBtn.setText(text);
+            rightBtn.setVisibility(View.VISIBLE);
+            setupOnClickListener(onClickListener);
+        }
+    }
+
+    private void setupOnClickListener(final View.OnClickListener onClickListener) {
+        if (onClickListener != null) {
+            rightBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickListener.onClick(v);
+                }
+            });
+        }
+    }
+
+    @Override
+    public void setRightToolbarButton(int iconRes, View.OnClickListener onClickListener) {
+        if (rightBtn == null)
+            return;
+        if (iconRes <= 0) {
+            rightBtn.setVisibility(View.GONE);
+        } else {
+            rightBtn.setVisibility(View.VISIBLE);
+            Drawable drawable = ContextCompat.getDrawable(context, iconRes);
+            rightBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, drawable, null);
+            setupOnClickListener(onClickListener);
+        }
     }
 }
