@@ -1,5 +1,6 @@
 package vn.eazy.sample.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -7,6 +8,7 @@ import android.view.View;
 import butterknife.OnClick;
 import vn.eazy.core.base.fragment.BaseMainFragment;
 import vn.eazy.sample.R;
+import vn.eazy.sample.activity.FragmentStateActivity;
 
 /**
  * Created by Brian  on 15/02/2017.
@@ -15,7 +17,7 @@ import vn.eazy.sample.R;
 
 public class MainFragment extends BaseMainFragment {
 
-    public static MainFragment newInstance(){
+    public static MainFragment newInstance() {
         return new MainFragment();
     }
 
@@ -31,22 +33,27 @@ public class MainFragment extends BaseMainFragment {
     }
 
     @OnClick(R.id.btn_one)
-    public void clickOne(){
+    public void clickOne() {
         getFragmentHelper().replaceFragment(DataFragment.newInstance());
     }
 
     @OnClick(R.id.btn_two)
-    public void clickTwo(){
+    public void clickTwo() {
         getFragmentHelper().replaceFragment(PullRefreshFragment.newInstance());
     }
 
     @OnClick(R.id.btn_three)
-    public void clickThree(){
+    public void clickThree() {
         getFragmentHelper().replaceFragment(LoadMoreFragment.newInstance());
     }
 
     @OnClick(R.id.btn_four)
-    public void clickFour(){
+    public void clickFour() {
         getFragmentHelper().replaceFragment(DialogDemoFragment.newInstance());
+    }
+
+    @OnClick(R.id.btn_five)
+    public void clickFive() {
+        startActivity(new Intent(getBaseActivity(), FragmentStateActivity.class));
     }
 }

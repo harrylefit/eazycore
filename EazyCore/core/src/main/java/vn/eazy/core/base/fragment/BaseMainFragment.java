@@ -1,5 +1,6 @@
 package vn.eazy.core.base.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -44,5 +45,15 @@ public abstract class BaseMainFragment extends BaseFragment implements OnBaseAct
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         showMenu(isShowMenu());
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 }
