@@ -29,6 +29,10 @@ public class FragmentStateHelper implements OnFragmentStateAction {
         stacksFragment = new ArrayList<>();
     }
 
+    public int getStackSelected() {
+        return stackSelected;
+    }
+
     @Override
     public void setStacksRootFragment(BaseFragment... fragments) {
         rootFragments = new BaseFragment[fragments.length];
@@ -40,11 +44,10 @@ public class FragmentStateHelper implements OnFragmentStateAction {
 
     @Override
     public void changeRootFragment(BaseFragment fragments, int stackId) {
-        clearStack(stackId, true);
+        clearStack(stackId);
+        beginTrans().remove(getFragByTag(stacksFragment.get(stackId).pop().getTag())).commit();
         rootFragments[stackId] = fragments;
-        if (stackId == stackSelected) {
-            refreshStack(stackId);
-        }
+        refreshStack(stackId);
     }
 
 
@@ -59,7 +62,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     @Override
     public void pushFragment(BaseFragment fragment) {
         beginTrans().add(idContent, fragment, generateTag(fragment)).commit();
-        beginTrans().detach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).commit();
+        detachCurrentFrag();
         stacksFragment.get(stackSelected).push(fragment);
     }
 
@@ -78,45 +81,41 @@ public class FragmentStateHelper implements OnFragmentStateAction {
 
     @Override
     public void showStack(int stackId) {
-        if (stackId == stackSelected) {
-            return;
+        if (stackId != stackSelected) {
+            attackStack(stackId);
+            detachPrevStack();
+            stackSelected = stackId;
         }
-        if (stacksFragment.get(stackId).size() == 0) {
-            refreshStack(stackId);
-        } else {
-            beginTrans().attach(getFragByTag(stacksFragment.get(stackId).peek().getTag())).
-                    commit();
-        }
-        if (stackSelected != -1) {
-            beginTrans().detach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).
-                    commit();
-        }
-        stackSelected = stackId;
     }
 
+    @Override
+    public void refreshStack(int stackId) {
+        if (stackId == stackSelected) {
+            attackStack(stackId);
+        }
+    }
 
     @Override
     public void replaceFragment(BaseFragment fragment) {
-
+        beginTrans().replace(idContent, fragment, generateTag(fragment)).commit();
+        stacksFragment.get(stackSelected).pop();
+        stacksFragment.get(stackSelected).push(fragment);
     }
 
     @Override
-    public void clearStack(int stackId, boolean notKeepRoot) {
+    public void clearStack(int stackId) {
         Stack<BaseFragment> stackFragment = stacksFragment.get(stackId);
-        int minIndex = 1;
-        if (notKeepRoot) {
-            minIndex = 0;
+        while (stackFragment.size() > 1) {
+            beginTrans().remove(getFragByTag(stackFragment.pop().getTag())).commit();
         }
-        while (stackFragment.size() > minIndex) {
-            beginTrans().remove(getFragByTag(stackFragment.pop().getTag()));
-        }
+        refreshStack(stackId);
     }
 
 
     @Override
-    public void clearAllStacks(boolean notKeepRoot) {
+    public void clearAllStacks() {
         for (Stack<BaseFragment> stack : stacksFragment) {
-            clearStack(stacksFragment.indexOf(stack), notKeepRoot);
+            clearStack(stacksFragment.indexOf(stack));
         }
     }
 
@@ -128,12 +127,30 @@ public class FragmentStateHelper implements OnFragmentStateAction {
         return fragmentManager.findFragmentByTag(tab);
     }
 
-
     private FragmentTransaction beginTrans() {
         return fragmentManager.beginTransaction().setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
     }
 
-    private void refreshStack(int stackId) {
+    private void attackStack(int stackId) {
+        if (stacksFragment.get(stackId).size() == 0) {
+            initStack(stackId);
+        } else {
+            beginTrans().attach(getFragByTag(stacksFragment.get(stackId).peek().getTag())).
+                    commit();
+        }
+    }
+
+    private void detachPrevStack() {
+        if (stackSelected != -1) {
+            detachCurrentFrag();
+        }
+    }
+
+    private void detachCurrentFrag() {
+        beginTrans().detach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).commit();
+    }
+
+    private void initStack(int stackId) {
         stacksFragment.get(stackId).push(rootFragments[stackId]);
         beginTrans().add(
                 idContent,

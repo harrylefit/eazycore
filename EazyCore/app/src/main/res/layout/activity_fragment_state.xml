@@ -14,14 +14,69 @@
             android:id="@id/fragment_content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/tabs"
+            android:layout_above="@+id/fragStateFeature"
             android:layout_below="@+id/toolbar" />
+
+        <LinearLayout
+            android:id="@+id/fragStateFeature"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tabs"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_clear_stack_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clear stack 1" />
+
+                <Button
+                    android:id="@+id/btn_clear_stack_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Clear stack 2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_change_root_stack_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Change root stack 1" />
+
+                <Button
+                    android:id="@+id/btn_change_root_stack_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Change root stack 2" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_clear_all_stack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Clear all stack" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
             android:orientation="horizontal">
 
             <Button

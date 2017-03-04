@@ -3,16 +3,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ffcbcb"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_frag_number"
+        android:id="@+id/tv_tab_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:textSize="30sp"
-        android:visibility="gone"
-        tools:text="Tab" />
+        tools:text="Tab 1" />
 
     <EditText
         android:id="@+id/edt_one"
@@ -20,11 +20,24 @@
         android:layout_height="wrap_content"
         android:hint="Input here" />
 
+    <TextView
+        android:id="@+id/tv_frag_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="0"
+        android:textSize="30sp" />
+
     <Button
         android:id="@+id/btn_new_frag"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="New Fragment" />
 
+    <Button
+        android:id="@+id/btn_replace_frag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Replace Fragment" />
 
 </LinearLayout>

@@ -40,7 +40,15 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
 
     @Override
     public void onCallBackToolbar() {
-        fragmentHelper.popBackStack();
+        if (useFragmentState()) {
+            if (!fragmentStateHelper.isRootFragment()) {
+                fragmentStateHelper.popFragment(1);
+            } else {
+                onBackPressed();
+            }
+        } else {
+            fragmentHelper.popBackStack();
+        }
     }
 
     @Override

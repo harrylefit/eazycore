@@ -20,10 +20,12 @@ public interface OnFragmentStateAction {
 
     void showStack(int stackId);
 
+    void refreshStack(int stackId);
+
     void replaceFragment(BaseFragment fragment);
 
-    void clearStack(int stackId, boolean notKeepRoot);
+    void clearStack(int stackId);
 
-    void clearAllStacks(boolean notKeepRoot);
+    void clearAllStacks();
 
 }
