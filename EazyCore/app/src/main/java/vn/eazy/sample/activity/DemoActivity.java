@@ -37,6 +37,11 @@ public class DemoActivity extends BaseMainActivity {
     }
 
     @Override
+    public boolean useFragmentState() {
+        return false;
+    }
+
+    @Override
     public void setUpViewsAndData() {
         fragmentHelper.replaceFragment(MainFragment.newInstance());
     }

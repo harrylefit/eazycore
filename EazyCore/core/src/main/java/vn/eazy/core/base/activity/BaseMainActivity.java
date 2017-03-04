@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 
 import vn.eazy.core.R;
 import vn.eazy.core.helper.FragmentHelper;
+import vn.eazy.core.helper.FragmentStateHelper;
 import vn.eazy.core.toolbar.OnCallBackToolbarAction;
 import vn.eazy.core.toolbar.ToolbarHelper;
 
@@ -19,10 +20,15 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
     protected ToolbarHelper toolbarHelper;
     protected Toolbar toolbar;
     public FragmentHelper fragmentHelper;
+    public FragmentStateHelper fragmentStateHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        fragmentHelper = new FragmentHelper(getSupportFragmentManager(), R.id.fragment_content);
+        if (useFragmentState()) {
+            fragmentStateHelper = new FragmentStateHelper(getSupportFragmentManager(), R.id.fragment_content);
+        } else {
+            fragmentHelper = new FragmentHelper(getSupportFragmentManager(), R.id.fragment_content);
+        }
         super.onCreate(savedInstanceState);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         try {
@@ -43,8 +49,8 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
     }
 
     @Override
-    public void setTitleToolbar(@NonNull String msg,@NonNull String font) {
-        toolbarHelper.setTitle(msg,font);
+    public void setTitleToolbar(@NonNull String msg, @NonNull String font) {
+        toolbarHelper.setTitle(msg, font);
     }
 
     @Override
@@ -64,7 +70,7 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
             setSupportActionBar(toolbar);
             toolbar.setBackgroundResource(onColorOfToolbar());
             toolbarHelper = getToolbarHelper();
-            if(toolbarHelper == null){
+            if (toolbarHelper == null) {
                 toolbarHelper = new ToolbarHelper(toolbar);
             }
             toolbarHelper.setImageForLeftButton(onImageForLeftButtonToolbar());
@@ -75,7 +81,9 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
 
     public abstract int onImageForLeftButtonToolbar();
 
-    public T getToolbarHelper()  {
+    public T getToolbarHelper() {
         return (T) toolbarHelper;
     }
+
+    public abstract boolean useFragmentState();
 }
