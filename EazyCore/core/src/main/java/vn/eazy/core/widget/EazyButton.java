@@ -69,6 +69,9 @@ public abstract class EazyButton extends Button {
         if (!TextUtils.isEmpty(createMediumFont())) {
             fontArrays.add(createMediumFont());
         }
+        if (!TextUtils.isEmpty(createItalicFont())) {
+            fontArrays.add(createItalicFont());
+        }
     }
 
     protected abstract String createLightFont();
@@ -77,6 +80,9 @@ public abstract class EazyButton extends Button {
 
     protected abstract String createMediumFont();
 
+    protected  String createItalicFont(){
+        return null;
+    }
 
     public void setFontSize(float ratioSize) {
         if (ratioSize <= 0 || ratioSize == 1)
