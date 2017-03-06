@@ -1,5 +1,6 @@
 package vn.eazy.core.base.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -50,7 +51,7 @@ public abstract class BaseMainFragment extends BaseFragment implements OnBaseAct
 
     @Override
     public ToolbarHelper getToolbarHelper() {
-        if(getBaseActivity() instanceof BaseMainActivity){
+        if (getBaseActivity() instanceof BaseMainActivity) {
             return ((BaseMainActivity) getBaseActivity()).toolbarHelper;
         }
         return null;

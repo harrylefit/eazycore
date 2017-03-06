@@ -41,15 +41,16 @@ android {
 }
 
 dependencies {
-    ext{
+    ext {
         butterKnifeVerson = "8.4.0"
     }
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile (project(':core')){
+    compile(project(':core')) {
         exclude group: 'com.jakewharton', module: 'butterknife'
     }
 
     //ButterKnife
     compile "com.jakewharton:butterknife:$butterKnifeVerson"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVerson"
+    compile 'com.android.support:appcompat-v7:25.1.0'
 }
