@@ -45,7 +45,9 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     @Override
     public void changeRootFragment(BaseFragment fragments, int stackId) {
         clearStack(stackId);
-        beginTrans().remove(getFragByTag(stacksFragment.get(stackId).pop().getTag())).commit();
+        if (stacksFragment.get(stackId).size() > 0) {
+            beginTrans().remove(getFragByTag(stacksFragment.get(stackId).pop().getTag())).commit();
+        }
         rootFragments[stackId] = fragments;
         refreshStack(stackId);
     }
