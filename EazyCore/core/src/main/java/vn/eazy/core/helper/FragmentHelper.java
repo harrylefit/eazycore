@@ -47,6 +47,18 @@ public class FragmentHelper implements OnFragmentAction {
     }
 
     @Override
+    public void replaceFragment(BaseFragment baseFragment, boolean isBackStack, int inAnim, int outAnim) {
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction()
+                .setCustomAnimations(inAnim, outAnim)
+                .replace(idContent, baseFragment);
+
+        if (isBackStack) {
+            fragmentTransaction.addToBackStack(baseFragment.getClass().getName());
+        }
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @Override
     public void replaceFragment(BaseFragment baseFragment, Bundle bundle) {
         baseFragment.setArguments(bundle);
         fragmentManager.beginTransaction().replace(idContent, baseFragment)

@@ -70,6 +70,9 @@ public abstract class EazyTextView extends TextView {
         if (!TextUtils.isEmpty(createMediumFont())) {
             fontArrays.add(createMediumFont());
         }
+        if (!TextUtils.isEmpty(createItalicFont())) {
+            fontArrays.add(createItalicFont());
+        }
     }
 
     protected abstract String createLightFont();
@@ -77,6 +80,10 @@ public abstract class EazyTextView extends TextView {
     protected abstract String createRegularFont();
 
     protected abstract String createMediumFont();
+
+    protected  String createItalicFont(){
+        return null;
+    }
 
 
     public void setFontSize(float ratioSize) {
