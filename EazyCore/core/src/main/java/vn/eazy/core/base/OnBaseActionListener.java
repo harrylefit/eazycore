@@ -17,5 +17,5 @@ public interface OnBaseActionListener {
 
     void showMenu(boolean isShow);
 
-    ToolbarHelper getToolbarHelper();
+    ToolbarHelper getToolbarHelper() throws IllegalAccessException;
 }
