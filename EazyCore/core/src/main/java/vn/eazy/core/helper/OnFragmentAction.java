@@ -18,6 +18,7 @@ public interface OnFragmentAction {
     void replaceFragment(int id, BaseFragment baseFragment, Bundle bundle);
 
     void replaceFragment(BaseFragment baseFragment);
+    void replaceFragment(BaseFragment baseFragment,boolean isBackStack, int InAnim,int OutAnim);
 
     void replaceFragment(BaseFragment baseFragment, Bundle bundle);
 

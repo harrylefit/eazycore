@@ -89,7 +89,7 @@ public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActi
 
     public abstract int onImageForLeftButtonToolbar();
 
-    public T getToolbarHelper() {
+    public T getToolbarHelper() throws IllegalAccessException {
         return (T) toolbarHelper;
     }
 
