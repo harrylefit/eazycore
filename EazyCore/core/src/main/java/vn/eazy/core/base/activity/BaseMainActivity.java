@@ -17,7 +17,7 @@ import vn.eazy.core.toolbar.ToolbarHelper;
 
 public abstract class BaseMainActivity<T extends ToolbarHelper> extends BaseActivity implements OnCallBackToolbarAction {
     private final String NULL_TOOLBAR_EX = "Can't find toolbar of this activity. Please checking it. Note: With raw id : R.id.toolbar";
-    protected ToolbarHelper toolbarHelper;
+    public ToolbarHelper toolbarHelper;
     protected Toolbar toolbar;
     public FragmentHelper fragmentHelper;
     public FragmentStateHelper fragmentStateHelper;

@@ -1,5 +1,7 @@
 package vn.eazy.core.loader;
 
+import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 /**
@@ -11,17 +13,17 @@ public interface LoaderUtils {
         SPIN, PIE, ANNULAR, BAR
     }
 
-    void showLoading();
+    void showLoading(Context context);
 
-    void showLoaing(String title,TYPE type);
+    void showLoaing(@NonNull String title, TYPE type,Context context);
 
-    void showLoading(String title);
+    void showLoading(@NonNull String title,Context context);
 
-    void showLoading(String title,String detail,TYPE type);
+    void showLoading(@NonNull String title, @NonNull String detail,View view, TYPE type, Context context);
 
-    void showLoading(String title,String detail);
+    void showLoading(@NonNull String title,@NonNull String detail,Context context);
 
-    void showLoading(String title,View customView);
+    void showLoading(@NonNull String title,View customView,Context context);
 
     void hideLoading();
 }

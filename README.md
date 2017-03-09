@@ -13,6 +13,14 @@ Using :
 - [Timber](https://github.com/JakeWharton/timber)
 - [Rebound](https://github.com/facebook/rebound)
 
+Dependencies: 
+  - **Architect**
+    - [EazyMvp](https://github.com/harrylefit/eazymvp)
+  - **Utils**
+    - [EazyLoader](https://github.com/harrylefit/eazyloader)
+    - [EazySocial](https://github.com/harrylefit/eazysocial)
+    - [TopSnackBar](https://github.com/cuongloveit/topsnackbar)
+
 ##Structure
 
 There are base classes . They're separated into 3 main parts (activity, fragment, adapter)
@@ -59,7 +67,7 @@ Download
 --------
 
 ```groovy
-compile 'com.github.harrylefit:eazycore:1.0.3'
+compile 'com.github.harrylefit:eazycore:1.0.6'
 ```
 
 #Licence

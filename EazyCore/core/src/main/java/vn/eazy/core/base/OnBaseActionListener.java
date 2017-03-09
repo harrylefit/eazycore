@@ -1,5 +1,7 @@
 package vn.eazy.core.base;
 
+import vn.eazy.core.toolbar.ToolbarHelper;
+
 /**
  * Created by Harry on 12/23/16.
  */
@@ -14,4 +16,6 @@ public interface OnBaseActionListener {
     void showBackButton(boolean isShow);
 
     void showMenu(boolean isShow);
+
+    ToolbarHelper getToolbarHelper() throws IllegalAccessException;
 }

@@ -147,6 +147,14 @@ public class FragmentHelper implements OnFragmentAction {
     }
 
     @Override
+    public void clearAllFragments() {
+        for (int i = 0; i < fragmentManager.getBackStackEntryCount(); ++i) {
+            fragmentManager.popBackStackImmediate(null, FragmentManager.POP_BACK_STACK_INCLUSIVE);
+        }
+    }
+
+
+    @Override
     public BaseFragment getLastFragment() {
         return (BaseFragment) fragmentManager.getFragments().get(getSizeFragmentManager() - 1);
     }
