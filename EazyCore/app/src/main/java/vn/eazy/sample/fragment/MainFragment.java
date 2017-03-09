@@ -56,4 +56,9 @@ public class MainFragment extends BaseMainFragment {
     public void clickFive() {
         startActivity(new Intent(getBaseActivity(), FragmentStateActivity.class));
     }
+
+    @OnClick(R.id.btn_six)
+    public void clickSix() {
+        getFragmentHelper().replaceFragment(new StatusPageFragment());
+    }
 }

@@ -14,4 +14,8 @@
     <!-- drawer -->
     <item name="drawer_layout" type="id" />
     <item name="left_drawer" type="id" />
+
+    <item name="tvMessagePage" type="id" />
+    <item name="progressPage" type="id" />
+    <item name="containerPage" type="id" />
 </resources>
