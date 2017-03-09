@@ -46,7 +46,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     public void changeRootFragment(BaseFragment fragments, int stackId) {
         clearStack(stackId);
         if (stacksFragment.get(stackId).size() > 0) {
-            beginTrans().remove(getFragByTag(stacksFragment.get(stackId).pop().getTag())).commit();
+            beginTrans().remove(getFragByTag(stacksFragment.get(stackId).pop().getTag())).commitAllowingStateLoss();
         }
         rootFragments[stackId] = fragments;
         refreshStack(stackId);
@@ -63,7 +63,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
 
     @Override
     public void pushFragment(BaseFragment fragment) {
-        beginTrans().add(idContent, fragment, generateTag(fragment)).commit();
+        beginTrans().add(idContent, fragment, generateTag(fragment)).commitAllowingStateLoss();
         detachCurrentFrag();
         stacksFragment.get(stackSelected).push(fragment);
     }
@@ -75,10 +75,10 @@ public class FragmentStateHelper implements OnFragmentStateAction {
         }
         for (int index = 0; index < numberPop; index++) {
             beginTrans().remove(getFragByTag(stacksFragment.get(stackSelected).pop().getTag())).
-                    commit();
+                    commitAllowingStateLoss();
         }
         beginTrans().attach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).
-                commit();
+                commitAllowingStateLoss();
     }
 
     @Override
@@ -99,7 +99,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
 
     @Override
     public void replaceFragment(BaseFragment fragment) {
-        beginTrans().replace(idContent, fragment, generateTag(fragment)).commit();
+        beginTrans().replace(idContent, fragment, generateTag(fragment)).commitAllowingStateLoss();
         stacksFragment.get(stackSelected).pop();
         stacksFragment.get(stackSelected).push(fragment);
     }
@@ -108,7 +108,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     public void clearStack(int stackId) {
         Stack<BaseFragment> stackFragment = stacksFragment.get(stackId);
         while (stackFragment.size() > 1) {
-            beginTrans().remove(getFragByTag(stackFragment.pop().getTag())).commit();
+            beginTrans().remove(getFragByTag(stackFragment.pop().getTag())).commitAllowingStateLoss();
         }
         refreshStack(stackId);
     }
@@ -138,7 +138,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
             initStack(stackId);
         } else {
             beginTrans().attach(getFragByTag(stacksFragment.get(stackId).peek().getTag())).
-                    commit();
+                    commitAllowingStateLoss();
         }
     }
 
@@ -149,7 +149,7 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     }
 
     private void detachCurrentFrag() {
-        beginTrans().detach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).commit();
+        beginTrans().detach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).commitAllowingStateLoss();
     }
 
     private void initStack(int stackId) {
@@ -158,6 +158,6 @@ public class FragmentStateHelper implements OnFragmentStateAction {
                 idContent,
                 stacksFragment.get(stackId).peek(),
                 generateTag(stacksFragment.get(stackId).peek())).
-                commit();
+                commitAllowingStateLoss();
     }
 }
