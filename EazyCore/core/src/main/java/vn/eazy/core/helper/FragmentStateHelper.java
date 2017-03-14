@@ -22,11 +22,13 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     private int tagCount;
     private List<Stack<BaseFragment>> stacksFragment;
     private BaseFragment[] rootFragments;
+    private List<String> fragmentsKeepAlive;
 
     public FragmentStateHelper(FragmentManager fragmentManager, int idContent) {
         this.fragmentManager = fragmentManager;
         this.idContent = idContent;
         stacksFragment = new ArrayList<>();
+        fragmentsKeepAlive = new ArrayList<>();
     }
 
     public int getStackSelected() {
@@ -69,6 +71,13 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     }
 
     @Override
+    public void pushFragmentKeepOld(BaseFragment fragment) {
+        beginTrans().add(idContent, fragment, generateTag(fragment)).commitAllowingStateLoss();
+        stacksFragment.get(stackSelected).push(fragment);
+        fragmentsKeepAlive.add(stacksFragment.get(stackSelected).peek().getTag());
+    }
+
+    @Override
     public void popFragment(int numberPop) {
         if (numberPop >= stacksFragment.get(stackSelected).size()) {
             throw new StringIndexOutOfBoundsException("Number pop out of stack size");
@@ -77,8 +86,10 @@ public class FragmentStateHelper implements OnFragmentStateAction {
             beginTrans().remove(getFragByTag(stacksFragment.get(stackSelected).pop().getTag())).
                     commitAllowingStateLoss();
         }
-        beginTrans().attach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).
-                commitAllowingStateLoss();
+        if (!fragmentsKeepAlive.contains(stacksFragment.get(stackSelected).peek().getTag())) {
+            beginTrans().attach(getFragByTag(stacksFragment.get(stackSelected).peek().getTag())).
+                    commitAllowingStateLoss();
+        }
     }
 
     @Override
