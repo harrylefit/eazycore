@@ -43,7 +43,7 @@ public class MainStateFragment extends BaseMainFragment {
 
     @OnClick(R.id.btn_new_frag)
     void clickNewFrag() {
-        ((BaseMainActivity) getBaseActivity()).fragmentStateHelper.pushFragmentKeepOld(generateNewFragment());
+        ((BaseMainActivity) getBaseActivity()).fragmentStateHelper.pushFragment(generateNewFragment());
     }
 
     @OnClick(R.id.btn_replace_frag)
