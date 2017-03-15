@@ -16,6 +16,8 @@ public interface OnFragmentStateAction {
 
     void pushFragment(BaseFragment fragment);
 
+    void pushFragmentKeepOld(BaseFragment fragment);
+
     void popFragment(int numberPop);
 
     void showStack(int stackId);
