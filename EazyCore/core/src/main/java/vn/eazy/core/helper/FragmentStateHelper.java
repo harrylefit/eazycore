@@ -24,6 +24,22 @@ public class FragmentStateHelper implements OnFragmentStateAction {
     private BaseFragment[] rootFragments;
     private List<String> fragmentsKeepAlive;
 
+    public FragmentManager getFragmentManager() {
+        return fragmentManager;
+    }
+
+    public List<Stack<BaseFragment>> getStacksFragment() {
+        return stacksFragment;
+    }
+
+    public BaseFragment[] getRootFragments() {
+        return rootFragments;
+    }
+
+    public List<String> getFragmentsKeepAlive() {
+        return fragmentsKeepAlive;
+    }
+
     public FragmentStateHelper(FragmentManager fragmentManager, int idContent) {
         this.fragmentManager = fragmentManager;
         this.idContent = idContent;
