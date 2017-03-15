@@ -30,6 +30,9 @@ public class ToolbarHelper implements OnToolbarAction {
         context = toolbar.getContext();
         leftBtn = (ImageView) toolbar.findViewById(R.id.left_button);
         rightBtn = (TextView) toolbar.findViewById(R.id.right_button);
+        if (rightBtn == null) {
+            throw new IllegalAccessException("Can't find this right button");
+        }
         if (leftBtn == null) {
             throw new IllegalAccessException("Can't find this Left button");
         }
