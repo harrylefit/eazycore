@@ -104,6 +104,8 @@ public class ToolbarHelper implements OnToolbarAction {
 
     @Override
     public void setRightToolbarButton(String text, View.OnClickListener onClickListener) {
+
+        rightBtn.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         if (rightBtn == null)
             return;
         if (TextUtils.isEmpty(text)) {
@@ -128,6 +130,7 @@ public class ToolbarHelper implements OnToolbarAction {
 
     @Override
     public void setRightToolbarButton(int iconRes, View.OnClickListener onClickListener) {
+        rightBtn.setText("");
         if (rightBtn == null)
             return;
         if (iconRes <= 0) {
