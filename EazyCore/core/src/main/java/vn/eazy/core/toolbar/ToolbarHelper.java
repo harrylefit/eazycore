@@ -73,6 +73,11 @@ public class ToolbarHelper implements OnToolbarAction {
     }
 
     @Override
+    public void showRightToolbar(boolean isShow) {
+        rightBtn.setVisibility(isShow ? View.VISIBLE : View.GONE);
+    }
+
+    @Override
     public void showBackButton(boolean isShow) {
         showBackButton(isShow, null);
     }
@@ -96,6 +101,8 @@ public class ToolbarHelper implements OnToolbarAction {
             leftBtn.setOnClickListener(null);
         }
     }
+
+
 
     @Override
     public void setImageForLeftButton(int drawable) {

@@ -15,6 +15,8 @@ public interface OnToolbarAction {
 
     void showToolbar(boolean isShow);
 
+    void showRightToolbar(boolean isShow);
+
     void showBackButton(boolean isShow);
 
     void showBackButton(boolean isShow, OnCallBackToolbarAction onCallBackToolbarAction);
