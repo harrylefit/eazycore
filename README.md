@@ -67,7 +67,7 @@ Download
 --------
 
 ```groovy
-compile 'com.github.harrylefit:eazycore:1.0.7.1'
+compile 'com.github.harrylefit:eazycore:1.0.7.3'
 ```
 
 #Licence
