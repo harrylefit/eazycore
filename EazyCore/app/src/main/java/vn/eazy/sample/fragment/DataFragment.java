@@ -50,6 +50,5 @@ public class DataFragment extends BaseMainWithDataFragment {
         super.onViewCreated(view, savedInstanceState);
         showBackButton(true);
         adapter.addAll(DummyFactory.generateData());
-
     }
 }
