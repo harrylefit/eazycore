@@ -7,8 +7,8 @@ import android.support.annotation.Nullable;
 import butterknife.OnClick;
 import vn.eazy.core.base.activity.BaseMainActivity;
 import vn.eazy.sample.R;
-import vn.eazy.sample.fragment.DataFragment;
-import vn.eazy.sample.fragment.MainStateFragment;
+
+//import vn.eazy.sample.fragment.DataFragment;
 
 public class FragmentStateActivity extends BaseMainActivity {
     public int tab1FragmentNumber = 0;
@@ -36,10 +36,10 @@ public class FragmentStateActivity extends BaseMainActivity {
         setTitleMainColor(Color.WHITE);
         showBackButton(true);
 
-        fragmentStateHelper.setStacksRootFragment(
-                MainStateFragment.newInstance("Tab 1", String.valueOf(tab1FragmentNumber++)),
-                MainStateFragment.newInstance("Tab 2", String.valueOf(tab2FragmentNumber++)));
-        fragmentStateHelper.showStack(0);
+//        fragmentStateHelper.setStacksRootFragment(
+//                MainStateFragment.newInstance("Tab 1", String.valueOf(tab1FragmentNumber++)),
+//                MainStateFragment.newInstance("Tab 2", String.valueOf(tab2FragmentNumber++)));
+//        fragmentStateHelper.showStack(0);
     }
 
     @OnClick(R.id.btn_tab1)
@@ -66,12 +66,12 @@ public class FragmentStateActivity extends BaseMainActivity {
 
     @OnClick(R.id.btn_change_root_stack_1)
     void clickChangeRootStack1() {
-        fragmentStateHelper.changeRootFragment(DataFragment.newInstance(), 0);
+//        fragmentStateHelper.changeRootFragment(DataFragment.newInstance(), 0);
     }
 
     @OnClick(R.id.btn_change_root_stack_2)
     void clickChangeRootStack2() {
-        fragmentStateHelper.changeRootFragment(DataFragment.newInstance(), 1);
+//        fragmentStateHelper.changeRootFragment(DataFragment.newInstance(), 1);
     }
 
     @OnClick(R.id.btn_clear_all_stack)
