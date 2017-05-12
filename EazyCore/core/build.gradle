@@ -29,6 +29,7 @@ dependencies {
         bundlerParcelerVersion = "3.0.2"
         timberVersion = "4.5.0"
         reboundVersion = "0.3.8"
+        slimAdapterVersion = "1.3.0"
     }
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -39,9 +40,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile "com.android.support:design:25.1.0"
 
-    //no adapter
-    compile 'com.github.TellH.NoListAdapter:nolistadapter-rv:1.0.2'
-
     //parceler
     compile "org.parceler:parceler-api:$parcelerVersion"
     apt "org.parceler:parceler:$parcelerVersion"
@@ -51,9 +49,8 @@ dependencies {
     apt "com.hannesdorfmann.fragmentargs:processor:$fragArgsVersion"
     compile "com.hannesdorfmann.fragmentargs:bundler-parceler:$bundlerParcelerVersion"
 
-    //Timber
-    compile "com.jakewharton.timber:timber:$timberVersion"
 
     compile "com.facebook.rebound:rebound:$reboundVersion"
 
+    compile "net.idik:slimadapter:$slimAdapterVersion"
 }

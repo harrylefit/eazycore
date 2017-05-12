@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.tellh.nolistadapter.adapter.RecyclerViewAdapter;
 
 import vn.eazy.core.R;
 import vn.eazy.core.base.data.BaseObject;
@@ -22,7 +21,7 @@ import vn.eazy.core.recyclerview.AutoFitGridRecyclerView;
 
 public abstract class BaseMainWithDataFragment<V extends BaseObject> extends BaseMainFragment implements SwipeRefreshLayout.OnRefreshListener {
     protected RecyclerView rvData;
-    protected RecyclerViewAdapter adapter;
+    protected RecyclerView.Adapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
     private LinearLayout rootLayout;
     private ViewStubCompat replaceLayout;
@@ -94,7 +93,7 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
 
     public void clearAllData() {
         if (adapter != null) {
-            adapter.clear(rvData);
+//            adapter.clear(rvData);
         }
     }
 
@@ -138,7 +137,7 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
         return extraView;
     }
 
-    public abstract RecyclerViewAdapter initAdapter();
+    public abstract RecyclerView.Adapter initAdapter();
 
     public abstract TYPE_LAYOUT_MANAGER getTypeLayoutManager();
 

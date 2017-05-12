@@ -7,8 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.tellh.nolistadapter.adapter.RecyclerViewAdapter;
-
 import java.util.List;
 
 import vn.eazy.core.R;
@@ -21,7 +19,7 @@ import vn.eazy.core.helper.CommonHelper;
 
 public abstract class BaseDataDialog<T extends BaseModel> extends BaseAnimationDialog {
     private RecyclerView rvData;
-    private RecyclerViewAdapter adapter;
+    private RecyclerView.Adapter adapter;
     private LinearLayoutManager llm;
     private int widthDialog = -1;
     private int heightDialog = -1;
@@ -69,19 +67,19 @@ public abstract class BaseDataDialog<T extends BaseModel> extends BaseAnimationD
     }
 
     public void addData(List<T> list) {
-        adapter.addAll(list);
+//        adapter.addAll(list);
     }
 
     public void deleteAll() {
         if (rvData != null) {
-            adapter.clear(rvData);
+//            adapter.clear(rvData);
         }
     }
 
     public void deleteAndAddAll(List<T> list) {
         deleteAll();
-        adapter.addAll(list);
+
     }
 
-    public abstract RecyclerViewAdapter initAdapter();
+    public abstract RecyclerView.Adapter initAdapter();
 }

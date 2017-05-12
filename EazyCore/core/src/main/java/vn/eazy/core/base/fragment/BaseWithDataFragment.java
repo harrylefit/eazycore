@@ -8,8 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.tellh.nolistadapter.adapter.RecyclerViewAdapter;
-
 import vn.eazy.core.R;
 import vn.eazy.core.base.data.BaseObject;
 
@@ -25,7 +23,7 @@ public abstract class BaseWithDataFragment<V extends BaseObject> extends BaseFra
     }
 
     protected RecyclerView rvData;
-    protected RecyclerViewAdapter adapter;
+    protected RecyclerView.Adapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
 
     @Override
@@ -74,7 +72,7 @@ public abstract class BaseWithDataFragment<V extends BaseObject> extends BaseFra
         if (swipeRefresh.isRefreshing()) {
             swipeRefresh.setRefreshing(false);
             if(adapter != null) {
-                adapter.clear(rvData);
+//                adapter.clear(rvData);
             }
         }
     }
@@ -84,7 +82,7 @@ public abstract class BaseWithDataFragment<V extends BaseObject> extends BaseFra
 
     }
 
-    public abstract RecyclerViewAdapter initAdapter();
+    public abstract RecyclerView.Adapter initAdapter();
 
     public abstract BaseWithDataFragment.TYPE_LAYOUT_MANAGER getTypeLayoutManager();
 }
