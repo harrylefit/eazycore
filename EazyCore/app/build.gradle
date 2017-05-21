@@ -60,6 +60,7 @@ dependencies {
     compile "com.jakewharton:butterknife:$butterKnifeVerson"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVerson"
 
+
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 }

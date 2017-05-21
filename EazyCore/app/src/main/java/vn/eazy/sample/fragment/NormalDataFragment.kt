@@ -2,31 +2,21 @@ package vn.eazy.sample.fragment
 
 import android.os.Bundle
 import android.view.View
-import kotlinx.android.synthetic.main.fragment_normal_data.*
+import android.widget.Toast
+import kotlinx.android.synthetic.main.fragment_multistateview.*
 import net.idik.lib.slimadapter.SlimAdapter
-import vn.eazy.core.base.fragment.BaseMainFragment
-import vn.eazy.sample.R
+import vn.eazy.core.base.fragment.BaseMainWithDataFragment
+import vn.eazy.core.state_view.MultiStateView
 import vn.eazy.sample.model.User
 
 /**
  * Created by Harry on 4/16/17.
  */
 
-class NormalDataFragment : BaseMainFragment() {
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_normal_data
-    }
-
+class NormalDataFragment : BaseMainWithDataFragment(), MultiStateView.StateListener {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         adapter.updateData(data).notifyDataSetChanged()
-    }
-
-    private val adapter by lazy {
-        SlimAdapter.create().register<User>(android.R.layout.simple_list_item_1, {
-            data, injector ->
-            injector.text(android.R.id.text1, data.name)
-        }).attachTo(rvData)
     }
 
     companion object {
@@ -42,5 +32,31 @@ class NormalDataFragment : BaseMainFragment() {
             data.add(User("Julian", "Singapore"))
             data.add(User("Iris", "Thailand"))
         }
+    }
+
+    override fun initAdapter(): SlimAdapter {
+        return SlimAdapter.create().register<User>(android.R.layout.simple_list_item_1, {
+            (name), injector ->
+            injector.text(android.R.id.text1, name)
+                    .clicked(android.R.id.text1, {
+                        multiStateView.viewState = MultiStateView.VIEW_STATE_LOADING
+                    })
+        }).attachTo(rvData)
+    }
+
+    override fun getTypeLayoutManager(): TYPE_LAYOUT_MANAGER {
+        return TYPE_LAYOUT_MANAGER.LINEAR_VERTICAL
+    }
+
+    override fun onStateListener(): MultiStateView.StateListener {
+        return this
+    }
+
+    override fun onStateChanged(viewState: Int) {
+        Toast.makeText(context,"State changed : " + viewState, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onStateInflated(viewState: Int, view: View) {
+        Toast.makeText(context,"State inflated", Toast.LENGTH_SHORT).show()
     }
 }

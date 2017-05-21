@@ -43,7 +43,7 @@ public class DemoActivity extends BaseMainActivity {
 
     @Override
     public void setUpViewsAndData() {
-        fragmentHelper.replaceFragment(MainMenuFragment.newInstance(), true, R.anim.fade_in, R.anim.fade_out);
+        fragmentHelper.replaceFragment(MainMenuFragment.Companion.newInstance(), true, R.anim.fade_in, R.anim.fade_out);
     }
 
 
