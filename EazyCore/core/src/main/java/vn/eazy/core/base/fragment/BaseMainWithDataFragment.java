@@ -99,6 +99,16 @@ public abstract class BaseMainWithDataFragment extends BaseMainFragment implemen
         }
     }
 
+    protected void disableSwipeRefresh() {
+        enableSwipeRefresh(false);
+    }
+
+    protected void enableSwipeRefresh(boolean enable) {
+        if (swipeRefresh != null) {
+            swipeRefresh.setEnabled(enable);
+        }
+    }
+
     public void hideRefreshLayoutAndClearData() {
         disableSwipeRefreshLayout();
         clearAllData();

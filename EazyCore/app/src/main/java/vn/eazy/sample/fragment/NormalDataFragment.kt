@@ -3,7 +3,6 @@ package vn.eazy.sample.fragment
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.fragment_multistateview.*
 import net.idik.lib.slimadapter.SlimAdapter
 import vn.eazy.core.base.fragment.BaseMainWithDataFragment
 import vn.eazy.core.state_view.MultiStateView
@@ -58,5 +57,12 @@ class NormalDataFragment : BaseMainWithDataFragment(), MultiStateView.StateListe
 
     override fun onStateInflated(viewState: Int, view: View) {
         Toast.makeText(context,"State inflated", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onRefresh() {
+        super.onRefresh()
+        adapter.data.clear();
+        adapter.notifyDataSetChanged();
+        swipeRefresh?.isRefreshing = false;
     }
 }
