@@ -42,11 +42,11 @@ dependencies {
 
     //parceler
     compile "org.parceler:parceler-api:$parcelerVersion"
-    apt "org.parceler:parceler:$parcelerVersion"
+    annotationProcessor "org.parceler:parceler:$parcelerVersion"
 
     //fragArgs
     compile "com.hannesdorfmann.fragmentargs:annotation:$fragArgsVersion"
-    apt "com.hannesdorfmann.fragmentargs:processor:$fragArgsVersion"
+    annotationProcessor "com.hannesdorfmann.fragmentargs:processor:$fragArgsVersion"
     compile "com.hannesdorfmann.fragmentargs:bundler-parceler:$bundlerParcelerVersion"
 
 
