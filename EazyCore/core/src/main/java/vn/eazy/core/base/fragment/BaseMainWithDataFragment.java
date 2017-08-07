@@ -6,26 +6,28 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.ViewStubCompat;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import com.tellh.nolistadapter.adapter.RecyclerViewAdapter;
+import net.idik.lib.slimadapter.SlimAdapter;
 
 import vn.eazy.core.R;
-import vn.eazy.core.base.data.BaseObject;
 import vn.eazy.core.recyclerview.AutoFitGridRecyclerView;
+import vn.eazy.core.state_view.MultiStateView;
 
 /**
  * Created by Harry on 12/25/16.
  */
 
-public abstract class BaseMainWithDataFragment<V extends BaseObject> extends BaseMainFragment implements SwipeRefreshLayout.OnRefreshListener {
+public abstract class BaseMainWithDataFragment extends BaseMainFragment implements SwipeRefreshLayout.OnRefreshListener {
     protected RecyclerView rvData;
-    protected RecyclerViewAdapter adapter;
+    protected SlimAdapter adapter;
     protected SwipeRefreshLayout swipeRefresh;
     private LinearLayout rootLayout;
     private ViewStubCompat replaceLayout;
+    private MultiStateView multiStateView;
     private View extraView;
 
     @Override
@@ -82,7 +84,6 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
 
         checkAndSetLayoutManagerByType();
         adapter = initAdapter();
-        rvData.setAdapter(adapter);
         swipeRefresh.setOnRefreshListener(this);
     }
 
@@ -94,11 +95,21 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
 
     public void clearAllData() {
         if (adapter != null) {
-            adapter.clear(rvData);
+
         }
     }
 
-    public void hideRefreshLayoutAndClearData(){
+    protected void disableSwipeRefresh() {
+        enableSwipeRefresh(false);
+    }
+
+    protected void enableSwipeRefresh(boolean enable) {
+        if (swipeRefresh != null) {
+            swipeRefresh.setEnabled(enable);
+        }
+    }
+
+    public void hideRefreshLayoutAndClearData() {
         disableSwipeRefreshLayout();
         clearAllData();
     }
@@ -116,14 +127,33 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
     public void preInitLayout() {
         super.preInitLayout();
         //todo setup ExtraView
-        rvData = (RecyclerView) rootView.findViewById(R.id.rvData);
+    }
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = super.onCreateView(inflater, container, savedInstanceState);
+
         rootLayout = (LinearLayout) rootView.findViewById(R.id.root_layout);
         replaceLayout = (ViewStubCompat) rootView.findViewById(R.id.replace_layout);
+        multiStateView = (MultiStateView) rootView.findViewById(R.id.multiStateView);
         if (inflateExtraView() != -1) {
             replaceLayout.setLayoutResource(inflateExtraView());
             replaceLayout.inflate();
         }
         swipeRefresh = (SwipeRefreshLayout) rootView.findViewById(R.id.swipeRefresh);
+        swipeRefresh.setOnRefreshListener(onRefreshListener());
+
+        multiStateView.setStateListener(onStateListener());
+        return view;
+    }
+
+    protected SwipeRefreshLayout.OnRefreshListener onRefreshListener() {
+        return null;
+    }
+
+    protected MultiStateView.StateListener onStateListener() {
+        return null;
     }
 
     public LinearLayout getRootLayout() {
@@ -138,12 +168,16 @@ public abstract class BaseMainWithDataFragment<V extends BaseObject> extends Bas
         return extraView;
     }
 
-    public abstract RecyclerViewAdapter initAdapter();
+    public abstract SlimAdapter initAdapter();
 
     public abstract TYPE_LAYOUT_MANAGER getTypeLayoutManager();
 
     public int inflateExtraView() {
         return -1;
+    }
+
+    public MultiStateView getMultiStateView() {
+        return multiStateView;
     }
 
     public enum TYPE_LAYOUT_MANAGER {

@@ -18,4 +18,8 @@
     <item name="tvMessagePage" type="id" />
     <item name="progressPage" type="id" />
     <item name="containerPage" type="id" />
+    <item name="tag_multistateview" type="id"/>
+    
+    <!-- multistateview -->
+    <item name="multiStateView" type="id"/>
 </resources>

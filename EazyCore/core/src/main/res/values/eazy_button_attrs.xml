@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="EazyTextView">
-        <attr name="etv_font" format="enum">
+    <declare-styleable name="EazyButton">
+        <attr name="ebt_font" format="enum">
             <enum name="light" value="0" />
             <enum name="regular" value="1" />
             <enum name="medium" value="2" />
@@ -20,7 +20,7 @@
             <enum name="other_type_3" value="15" />
             <enum name="other_type_4" value="16" />
         </attr>
-        <attr name="etv_enableChangeSize" format="boolean" />
+        <attr name="ebt_enableChangeSize" format="boolean" />
 
     </declare-styleable>
 </resources>

@@ -8,7 +8,7 @@ import android.view.View;
 import butterknife.BindView;
 import vn.eazy.core.base.activity.BaseMainActivity;
 import vn.eazy.sample.R;
-import vn.eazy.sample.fragment.MainFragment;
+import vn.eazy.sample.fragment.MainMenuFragment;
 
 /**
  * Created by Harry on 2/7/17.
@@ -43,7 +43,7 @@ public class DemoActivity extends BaseMainActivity {
 
     @Override
     public void setUpViewsAndData() {
-        fragmentHelper.replaceFragment(new MainFragment(),true,R.anim.fade_in,R.anim.fade_out);
+        fragmentHelper.replaceFragment(MainMenuFragment.Companion.newInstance(), true, R.anim.fade_in, R.anim.fade_out);
     }
 
 

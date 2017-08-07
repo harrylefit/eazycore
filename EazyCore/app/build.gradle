@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 apply plugin: 'android-apt'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -38,6 +41,10 @@ android {
             resValue "string", "app_name", "EazyCore"
         }
     }
+
+    sourceSets{
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -52,5 +59,14 @@ dependencies {
     //ButterKnife
     compile "com.jakewharton:butterknife:$butterKnifeVerson"
     apt "com.jakewharton:butterknife-compiler:$butterKnifeVerson"
+
+
     compile 'com.android.support:appcompat-v7:25.1.0'
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+}
+kapt {
+    correctErrorTypes = true
+}
+repositories {
+    mavenCentral()
 }
